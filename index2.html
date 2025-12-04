@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>examsk24.online - Online Education & Test Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <meta name="google-site-verification" content="smWldLg91_qY49cxQRkOFCChOl5V7RiQRUuqc7qlQuQ" />
+    <meta name="description" content="Dive into examsk24, the ultimate online quiz game! Challenge yourself with engaging questions on geography, history, and more. Track your score and restart anytime. Perfect for quick brain teasers and learning fun.">
+    <meta name="keywords" content="quiz game, online quiz, interactive quiz, trivia, knowledge test, fun quizzes, examsk24,Exam in hindi,online examsk24 in hindi,All subjects quiz, हिंदी में परीक्षा,इतिहास टेस्ट, History test,test examsk24, test in hindi">
+    <meta name="description" content="मज़ेदार हिंदी क्विज़ खेलो—GK, बॉलीवुड, साइंस! फ्री और आसान।">
+    <meta name="keywords" content="quiz in hindi, gk questions, trivia quiz">
+    <meta name="author" content="examsk24">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for Social Media Sharing -->
+    <meta property="og:title" content="examsk24 - Fun Interactive Quiz Game">
+    <meta property="og:description" content="Test your knowledge with exciting quizzes on various topics. Play now and boost your trivia skills!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.examsk24.online/">
+    <meta property="og:image" content="https://www.examsk24.online/">
+    <meta property="og:site_name" content="examsk24">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="examsk24 - Fun Interactive Quiz Game">
+    <meta name="twitter:description" content="Challenge yourself with our interactive quizzes!">
+    <meta name="twitter:image" content="https://www.examsk24.online/">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.examsk24.online/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    
+    <!-- Structured Data for Quiz (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://www.examsk24.online/",
+        "@type": "Quiz",
+        "name": "examsk24",
+        "description": "An interactive online quiz game to test knowledge on various subjects.",
+        "url": "https://www.examsk24.online/",
+        "author": {
+            "@type": "Organization",
+            "name": "examsk24"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "examsk24"
+        }
+    }
+    </script>
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .welcome-text i {
+            margin-right: 8px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+        
+        .nav-link {
+            padding: 10px 0;
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link i {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            transition: var(--transition);
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .stat-text {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Online Tests Section */
+        .online-tests {
+            padding: 80px 0;
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .test-category {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .test-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .test-list li {
+            margin-bottom: 12px;
+        }
+        
+        .test-list a {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+        
+        .test-list a:hover {
+            color: var(--primary);
+        }
+        
+        .test-list i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        
+        /* Popular Exams Section */
+        .popular-exams {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .exams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .exam-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .exam-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .exam-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        
+        .exam-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .exam-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .exam-link {
+            color: var(--primary);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .exam-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .exam-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .large-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3, .footer-section h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-section ul li a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 0 0 15px;
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 10px 0;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                margin-top: 10px;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-buttons, .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .test-category, .exam-card, .feature-card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="welcome-text">
+                        <i class="fas fa-graduation-cap"></i>
+                        Welcome to examsk24.online ....
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="https://www.examsk24.online/">
+                        <i class="fas fa-book-open"></i>
+                        <span>examsk24.online</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="https://www.examsk24.online/" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="https://www.rojgarresult.com/recruitments/" class="nav-link">Jobs</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">STUDY METERIAL <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/indexcc.html">CCC Notes</a></li>
+                            <li><a href="/ccc.html">CCC Syllabus</a></li>
+                            <li><a href="/ccc.html">CCC Books</a></li>
+                            <li><a href="/ccc.html">CCC Video Tutorials</a></li>
+                        </ul>
+                    </li>
+                   
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Online Tests <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)">CCC Online Test</a></li>
+                            <li><a href="/gk.html">GK Test</a></li>
+                            <li><a href="/ccc.html">Computer Test</a></li>
+                            <li><a href="/gk.html">Banking Exams</a></li>
+                            <li><a href="/gk.html">SSC Exams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link">Exam Material</a></li>
+                    <!<li class="nav-item"><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)" class="nav-link">CCC Test</a></li>
+                    <li class="nav-item"><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)" class="nav-link">CCC NIELIT Test</a></li>
+                    <li class="nav-item">
+                        <!-- Add to your main website's navigation -->
+                        <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === true): ?>
+                            <a href="/ap-admin.html" class="nav-link" target="_blank">
+                                <i class="fas fa-cog"></i> AP
+                             </a>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>examsk24.online</h1>
+                <p>Prepare for Your Exams with Confidence , Access free online tests, study materials, and exam resources </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary"onclick="window.location.href='/gk.html'">Start Free Test</button>
+                    <button class="btn btn-secondary">Download Material</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Tests Section -->
+    <section class="online-tests">
+        <div class="container">
+            <h2 class="section-title">Online Tests</h2>
+            <div class="tests-grid">
+                <!-- Column 1 -->
+                <div class="test-category">
+                    <h3 class="category-title">CCC-ONLINE-TEST</h3>
+                    <ul class="test-list">
+                        <li><a href="https://www.guruji24.com/online-tests/mock-test/CCC-SUBJECT-WISE"><i class="fas fa-arrow-right"></i> CCC-SUBJECT-WISE</a></li>
+                        <li><a href=""><i class="fas fa-arrow-right"></i> UP LEKHPAL</a></li>
+                        <li><a href="/indexGK.html"><i class="fas fa-arrow-right"></i> PET</a></li>
+                        <li><a href="/indexGK.html"><i class="fas fa-arrow-right"></i> RTO EXAM</a></li>
+                        <li><a href="/indexGK.html"><i class="fas fa-arrow-right"></i> GK GENERAL KNOWLEDGE</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="test-category">
+                    <h3 class="category-title">TALLY</h3>
+                    <ul class="test-list">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> REASONING</a></li>
+                        <li><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)"><i class="fas fa-arrow-right"></i> O LEVEL</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> CET-TEST</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> JAIIB</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> CAIIB</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="test-category">
+                    <h3 class="category-title">COMPUTER ONLINE TEST</h3>
+                    <ul class="test-list">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> COMPUTER</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> JUNIOR-CLERK</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> SSC-GD</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> COPA</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> GENERAL ENGLISH</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Exams Section -->
+    <section class="popular-exams">
+        <div class="container">
+            <h2 class="section-title">Popular Exam Categories</h2>
+            <div class="exams-grid">
+                <div class="exam-card">
+                    <div class="exam-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>CCC Course</h3>
+                    <p>Course on Computer Concepts - NIELIT</p>
+                    <a href="#" class="exam-link">Start Practice <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="exam-card">
+                    <div class="exam-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Banking Exams</h3>
+                    <p>JAIIB, CAIIB, IBPS, SBI PO/Clerk</p>
+                    <a href="#" class="exam-link">Start Practice <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="exam-card">
+                    <div class="exam-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Computer Exams</h3>
+                    <p>O Level, COPA, Junior Clerk</p>
+                    <a href="https://examjila.in/" class="exam-link">Start Practice <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="exam-card">
+                    <div class="exam-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>SSC Exams</h3>
+                    <p>SSC GD, CGL, CHSL, MTS</p>
+                    <a href="#" class="exam-link">Start Practice <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose examsk24.online?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>Access study materials and tests anytime, anywhere</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Free Tests</h3>
+                    <p>Thousands of free online tests for various exams</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Performance Analytics</h3>
+                    <p>Track your progress with detailed analytics</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Responsive design works on all devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Preparation?</h2>
+                <p>Join thousands of students who are preparing for their exams with examsk24.online</p>
+                <!--<div class="cta-buttons">
+                    <button class="btn btn-primary large-btn">Create Free Account</button>
+                    <button class="btn btn-secondary large-btn">Browse All Tests</button>
+                </div>-->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-text">Online Tests</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-text">Students</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-text">Exam Categories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>examsk24.online</h3>
+                    <p>Your trusted partner for online education and exam preparation. We provide free study materials, online tests, and resources for various competitive exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">CCC Study Material</a></li>
+                        <li><a href="#">JAIIB/CAIIB</a></li>
+                        <li><a href="#">Online Tests</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Exam Categories</h4>
+                    <ul>
+                        <li><a href="#">CCC Online Test</a></li>
+                        <li><a href="#">Tally Test</a></li>
+                        <li><a href="#">Computer Test</a></li>
+                        <li><a href="#">Banking Exams</a></li>
+                        <li><a href="#">SSC Exams</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> support@examsk24.online</p>
+                        <p><i class="fas fa-globe"></i> www.examsk24.online</p>
+                        <p><i class="fas fa-clock"></i> 24/7 Available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 examsk24.online - It's all about education.... All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Mobile Dropdown Toggle
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && 
+                !e.target.closest('.nav-menu') && 
+                !e.target.closest('.hamburger')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
