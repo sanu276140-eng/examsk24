@@ -1,0 +1,84 @@
+# ============================================
+# GIT IGNORE FILE FOR EXAMSK24 WEBSITE
+# ============================================
+
+# Node.js और NPM files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Firebase files
+.firebase/
+.firebaserc
+firebase-config.js
+service-account-key.json
+
+# Environment और Secret files
+.env
+.env.local
+.secret
+*.key
+*.pem
+credentials.json
+
+# System files
+.DS_Store
+.DS_Store?
+Thumbs.db
+desktop.ini
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# User uploaded files
+uploads/
+user-data/
+exam-submissions/
+
+# Backup files
+*.bak
+backup/
+*.backup
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/
+out/
+
+# Package managers
+yarn.lock
+
+# Firebase emulators
+.firebase/
+
+# Session files
+*.session
+sessions/
+
+# Database files (अगर local DB use कर रहे हैं)
+*.db
+*.sqlite
+exam-data.db
+
+# Source maps
+*.map
+
+# Your specific project files
+admin-passwords.txt
+exam-answers-backup/
+question-bank-cache/
