@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div id="loginBox" class="box">
+  <h2>Admin Login</h2>
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button id="loginBtn">Login</button>
+</div>
+
+<div id="panel" class="box hide">
+  <div class="top">
+    <h2>Question Manager</h2>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <input id="q" placeholder="Question">
+  <input id="o1" placeholder="Option 1">
+  <input id="o2" placeholder="Option 2">
+  <input id="o3" placeholder="Option 3">
+  <input id="o4" placeholder="Option 4">
+
+  <select id="ans">
+    <option value="0">Correct: Option 1</option>
+    <option value="1">Correct: Option 2</option>
+    <option value="2">Correct: Option 3</option>
+    <option value="3">Correct: Option 4</option>
+  </select>
+
+  <button id="saveBtn">Save Question</button>
+
+  <h3>All Questions</h3>
+  <div id="list"></div>
+</div>
+
+<!-- 🔥 Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script src="admin.js"></script>
+</body>
+</html>
