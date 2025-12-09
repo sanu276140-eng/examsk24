@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ExamsK24 — Admin Panel</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Simple, clean admin styles */
+    :root{--bg:#f5f7fb;--card:#ffffff;--accent:#0b74de;--danger:#e55353}
+    *{box-sizing:border-box;font-family:Poppins,system-ui,Segoe UI,Arial}
+    body{margin:0;background:var(--bg);color:#111}
+    .wrap{max-width:1000px;margin:28px auto;padding:20px}
+    .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand i{font-size:28px;color:var(--accent)}
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(12,25,47,0.06)}
+    .grid{display:grid;grid-template-columns:1fr 400px;gap:16px}
+
+    /* login */
+    .login-box{max-width:420px;margin:40px auto}
+    input,select,textarea,button{font:inherit}
+    .form-row{margin-bottom:12px}
+    label{display:block;margin-bottom:6px;font-size:13px;color:#333}
+    input[type=text],input[type=email],textarea,select{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px}
+    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+    .danger{background:var(--danger)}
+
+    /* question list */
+    .q-list{max-height:520px;overflow:auto;padding:8px}
+    .q-item{border:1px solid #eef2f7;padding:10px;border-radius:8px;margin-bottom:10px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .q-main{flex:1}
+    .meta{font-size:12px;color:#666;margin-top:6px}
+    .actions{display:flex;gap:8px}
+
+    .small{font-size:13px;padding:8px 10px}
+    .muted{color:#666}
+    .notice{padding:8px;border-radius:8px;background:#f0f8ff;color:#083a6b;margin-bottom:12px}
+
+    @media (max-width:880px){.grid{grid-template-columns:1fr} .top{flex-direction:column;align-items:flex-start;gap:10px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <i class="fas fa-book-open"></i>
+        <div>
+          <div style="font-weight:600">ExamsK24 Admin</div>
+          <div class="muted" style="font-size:13px">Manage questions • add / edit / delete • export</div>
+        </div>
+      </div>
+      <div id="auth-area" class="card" style="display:flex;align-items:center;gap:12px">
+        <div id="user-email" class="muted small">Not signed in</div>
+        <button id="btn-signin" class="small">Sign in</button>
+        <button id="btn-signout" class="small danger" style="display:none">Sign out</button>
+      </div>
+    </div>
+
+    <!-- NOTE: Put admin-only UI inside #admin-dashboard. Non-admins will be blocked. -->
+    <div id="admin-dashboard">
+      <div class="grid">
+        <!-- Left: Question list + search -->
+        <div>
+          <div class="card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+              <div style="font-weight:600">Questions</div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input id="search" placeholder="Search question / category" style="padding:8px;border-radius:8px;border:1px solid #e6e9ef" />
+                <button id="btn-export" class="small">Export JSON</button>
+              </div>
+            </div>
+            <div id="q-list" class="q-list"></div>
+          </div>
+        </div>
+
+        <!-- Right: Add/Edit form -->
+        <div>
+          <div class="card">
+            <div style="font-weight:600;margin-bottom:8px">Add / Edit Question</div>
+            <div class="notice">Fill form and click <strong>Save</strong>. To edit any question click Edit on the item — fields will populate.</div>
+            <div class="form-row">
+              <label>Category</label>
+              <input id="category" type="text" placeholder="e.g. SSC CGL, Banking, Current Affairs" />
+            </div>
+            <div class="form-row">
+              <label>Question (Hindi/English)</label>
+              <textarea id="question" rows="3" placeholder="Type the question..."></textarea>
+            </div>
+            <div class="form-row">
+              <label>Option A</label>
+              <input id="optA" type="text" placeholder="Option A" />
+            </div>
+            <div class="form-row">
+              <label>Option B</label>
+              <input id="optB" type="text" placeholder="Option B" />
+            </div>
+            <div class="form-row">
+              <label>Option C</label>
+              <input id="optC" type="text" placeholder="Option C" />
+            </div>
+            <div class="form-row">
+              <label>Option D</label>
+              <input id="optD" type="text" placeholder="Option D" />
+            </div>
+            <div class="form-row">
+              <label>Correct Answer</label>
+              <select id="answer">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button id="btn-save">Save</button>
+              <button id="btn-clear" class="small">Clear</button>
+            </div>
+            <div id="form-status" style="margin-top:10px" class="muted"></div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card">
+            <div style="font-weight:600;margin-bottom:8px">Quick actions</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button id="btn-publish" class="small">Publish to Live (manual)</button>
+              <button id="btn-clear-db" class="small danger">Delete All Questions</button>
+            </div>
+            <div class="muted" style="margin-top:8px;font-size:13px">Be careful with destructive actions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login prompt (hidden since panel requires firebase sign-in) -->
+    <div id="login-screen" style="display:none" class="login-box">
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:8px">Admin Sign In</div>
+        <div class="form-row"><label>Email</label><input id="login-email" type="email" /></div>
+        <div class="form-row"><label>Password</label><input id="login-pass" type="password" /></div>
+        <div style="display:flex;gap:8px"><button id="do-login">Sign in</button><button id="do-register" class="small">Create admin (optional)</button></div>
+        <div class="muted" style="margin-top:8px">Tip: For production, create admin users in Firebase Console and remove the register button.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase (compat) SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <script>
+   <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBftJD6pWrx5hAwEr3ep_S8NeqeiHQrCF4",
+    authDomain: "examsk24.firebaseapp.com",
+    projectId: "examsk24",
+    storageBucket: "examsk24.firebasestorage.app",
+    messagingSenderId: "569555436896",
+    appId: "1:569555436896:web:bd3671f9d3c32daf6e4a05"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+<script>
+
+    // ---------- Simple admin gating ----------
+    // We store allowed admin emails in a collection "admins" (doc id = email) for easy checking.
+    // Alternatively set custom claims or manage users manually in Firebase Console.
+
+    // UI refs
+    const userEmailEl = document.getElementById('user-email');
+    const btnSignIn = document.getElementById('btn-signin');
+    const btnSignOut = document.getElementById('btn-signout');
+    const loginScreen = document.getElementById('login-screen');
+    const adminDashboard = document.getElementById('admin-dashboard');
+
+    const btnDoLogin = document.getElementById('do-login');
+    const btnRegister = document.getElementById('do-register');
+    const inputLoginEmail = document.getElementById('login-email');
+    const inputLoginPass = document.getElementById('login-pass');
+
+    // form elements
+    const categoryEl = document.getElementById('category');
+    const questionEl = document.getElementById('question');
+    const optA = document.getElementById('optA');
+    const optB = document.getElementById('optB');
+    const optC = document.getElementById('optC');
+    const optD = document.getElementById('optD');
+    const answerEl = document.getElementById('answer');
+    const btnSave = document.getElementById('btn-save');
+    const btnClear = document.getElementById('btn-clear');
+    const qListEl = document.getElementById('q-list');
+    const formStatus = document.getElementById('form-status');
+    const search = document.getElementById('search');
+    const btnExport = document.getElementById('btn-export');
+    const btnClearDb = document.getElementById('btn-clear-db');
+
+    let editingId = null;
+    let currentAdmin = null;
+
+    // Helpers
+    function showStatus(msg, isError=false){ formStatus.textContent = msg; formStatus.style.color = isError ? 'var(--danger)' : '#0b74de'; }
+
+    // Sign-in flow
+    btnSignIn.addEventListener('click', ()=>{ loginScreen.style.display='block'; });
+    btnSignOut.addEventListener('click', ()=>{ auth.signOut(); });
+
+    btnDoLogin.addEventListener('click', async ()=>{
+      const e = inputLoginEmail.value.trim();
+      const p = inputLoginPass.value;
+      if(!e||!p){ alert('Enter email and password'); return }
+      try{
+        await auth.signInWithEmailAndPassword(e,p);
+      }catch(err){ alert('Sign in error: '+err.message) }
+    });
+
+    // Optional register (production: remove this button and create users from Firebase Console)
+    btnRegister.addEventListener('click', async ()=>{
+      const e = inputLoginEmail.value.trim();
+      const p = inputLoginPass.value;
+      if(!e||!p){ alert('Enter email and password'); return }
+      try{
+        const userCred = await auth.createUserWithEmailAndPassword(e,p);
+        // add to admins collection
+        await db.collection('admins').doc(userCred.user.email).set({createdAt: firebase.firestore.FieldValue.serverTimestamp()});
+        alert('Admin account created and saved.');
+      }catch(err){ alert('Register error: '+err.message) }
+    });
+
+    // Auth state change
+    auth.onAuthStateChanged(async user =>{
+      if(user){
+        // check admins collection
+        const doc = await db.collection('admins').doc(user.email).get();
+        if(!doc.exists){
+          // not an admin
+          alert('Your account is not allowed as admin. Contact site owner.');
+          auth.signOut();
+          return;
+        }
+        currentAdmin = user.email;
+        userEmailEl.textContent = user.email;
+        btnSignIn.style.display='none';
+        btnSignOut.style.display='inline-block';
+        loginScreen.style.display='none';
+        adminDashboard.style.display='block';
+        loadQuestions();
+      }else{
+        currentAdmin = null;
+        userEmailEl.textContent = 'Not signed in';
+        btnSignIn.style.display='inline-block';
+        btnSignOut.style.display='none';
+        adminDashboard.style.display='none';
+        loginScreen.style.display='none';
+      }
+    });
+
+    // CRUD operations
+    async function addQuestion(data){
+      data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      const ref = await db.collection('questions').add(data);
+      return ref.id;
+    }
+    async function updateQuestion(id, data){
+      data.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+      await db.collection('questions').doc(id).update(data);
+    }
+    async function deleteQuestion(id){
+      await db.collection('questions').doc(id).delete();
+    }
+
+    btnSave.addEventListener('click', async ()=>{
+      const payload = {
+        category: categoryEl.value.trim() || 'General',
+        question: questionEl.value.trim(),
+        options: { A: optA.value.trim(), B: optB.value.trim(), C: optC.value.trim(), D: optD.value.trim() },
+        answer: answerEl.value,
+        updatedBy: currentAdmin || null
+      };
+      if(!payload.question) { showStatus('Question is required', true); return }
+      try{
+        if(editingId){
+          await updateQuestion(editingId, payload);
+          showStatus('Question updated');
+          editingId = null;
+        }else{
+          await addQuestion(payload);
+          showStatus('Question added');
+        }
+        clearForm();
+        loadQuestions();
+      }catch(err){ showStatus('Error: '+err.message,true) }
+    });
+
+    btnClear.addEventListener('click', clearForm);
+    function clearForm(){ editingId=null; categoryEl.value=''; questionEl.value=''; optA.value=''; optB.value=''; optC.value=''; optD.value=''; answerEl.value='A'; showStatus(''); }
+
+    // Render question list
+    async function loadQuestions(){
+      qListEl.innerHTML = '<div class="muted">Loading…</div>';
+      try{
+        const snap = await db.collection('questions').orderBy('createdAt','desc').get();
+        const docs = snap.docs.map(d=>({id:d.id, ...d.data()}));
+        renderList(docs);
+      }catch(err){ qListEl.innerHTML = '<div class="muted">Failed to load: '+err.message+'</div>' }
+    }
+
+    function renderList(items){
+      const term = search.value.trim().toLowerCase();
+      const filtered = items.filter(it=>{
+        if(!term) return true;
+        return (it.question||'').toLowerCase().includes(term) || (it.category||'').toLowerCase().includes(term)
+      });
+      if(filtered.length===0){ qListEl.innerHTML = '<div class="muted">No questions found.</div>'; return }
+      qListEl.innerHTML = '';
+      filtered.forEach(it=>{
+        const div = document.createElement('div'); div.className='q-item';
+        const main = document.createElement('div'); main.className='q-main';
+        const qh = document.createElement('div'); qh.innerHTML = '<strong>'+escapeHtml((it.question||'').slice(0,300))+'</strong>';
+        const opts = document.createElement('div'); opts.className='meta';
+        const options = it.options||{};
+        opts.innerHTML = `A: ${escapeHtml(options.A||'')} &nbsp; | &nbsp; B: ${escapeHtml(options.B||'')} &nbsp; | &nbsp; C: ${escapeHtml(options.C||'')} &nbsp; | &nbsp; D: ${escapeHtml(options.D||'')}`;
+        const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `Category: ${it.category||'General'} • Answer: ${it.answer||''}`;
+        main.appendChild(qh); main.appendChild(opts); main.appendChild(meta);
+
+        const actions = document.createElement('div'); actions.className='actions';
+        const btnEdit = document.createElement('button'); btnEdit.className='small'; btnEdit.innerHTML='Edit';
+        btnEdit.onclick = ()=>{ populateFormForEdit(it); };
+        const btnDel = document.createElement('button'); btnDel.className='small danger'; btnDel.innerHTML='Delete';
+        btnDel.onclick = async ()=>{ if(confirm('Delete this question?')){ await deleteQuestion(it.id); loadQuestions(); } };
+        actions.appendChild(btnEdit); actions.appendChild(btnDel);
+
+        div.appendChild(main); div.appendChild(actions);
+        qListEl.appendChild(div);
+      });
+    }
+
+    function populateFormForEdit(it){
+      editingId = it.id;
+      categoryEl.value = it.category||'';
+      questionEl.value = it.question||'';
+      optA.value = (it.options && it.options.A) || '';
+      optB.value = (it.options && it.options.B) || '';
+      optC.value = (it.options && it.options.C) || '';
+      optD.value = (it.options && it.options.D) || '';
+      answerEl.value = it.answer || 'A';
+      showStatus('Editing question — remember to Save.');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // Escape helper
+    function escapeHtml(s){ return String(s).replace(/[&<>"'`]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;","`":"&#96;"}[c])) }
+
+    // Search
+    search.addEventListener('input', ()=> loadQuestions());
+
+    // Export
+    btnExport.addEventListener('click', async ()=>{
+      try{
+        const snap = await db.collection('questions').orderBy('createdAt','desc').get();
+        const data = snap.docs.map(d=>({id:d.id, ...d.data()}));
+        const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = 'questions-export.json'; document.body.appendChild(a); a.click(); a.remove();
+      }catch(err){ alert('Export error: '+err.message) }
+    });
+
+    // Delete all (destructive) — runs batched deletes
+    btnClearDb.addEventListener('click', async ()=>{
+      if(!confirm('Delete ALL questions? This cannot be undone.')) return;
+      const snap = await db.collection('questions').get();
+      const batch = db.batch();
+      snap.docs.forEach(d=> batch.delete(d.ref));
+      await batch.commit();
+      loadQuestions();
+      alert('All questions deleted');
+    });
+
+    // Simple publish placeholder
+    document.getElementById('btn-publish').addEventListener('click', ()=>{
+      alert('Publishing is specific to your deployment. You might copy the latest questions into your public DB/endpoint or trigger a build. This button is a placeholder.');
+    });
+
+    // OPTIONAL: realtime listener to keep UI in sync
+    // Uncomment to enable realtime updates instead of one-time load (beware of billing if many updates)
+    // db.collection('questions').orderBy('createdAt','desc').onSnapshot(snap=>{ renderList(snap.docs.map(d=>({id:d.id,...d.data()}))) });
+
+    // INITIAL: hide dashboard until auth state validated
+    adminDashboard.style.display='none';
+
+  </script>
+</body>
+</html>
