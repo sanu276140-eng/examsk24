@@ -152,26 +152,23 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
   <script>
-   <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    /********************************************
+     *  IMPORTANT: Replace the firebaseConfig
+     *  object below with your Firebase project's
+     *  configuration. (From Firebase console)
+     ********************************************/
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBftJD6pWrx5hAwEr3ep_S8NeqeiHQrCF4",
-    authDomain: "examsk24.firebaseapp.com",
-    projectId: "examsk24",
-    storageBucket: "examsk24.firebasestorage.app",
-    messagingSenderId: "569555436896",
-    appId: "1:569555436896:web:bd3671f9d3c32daf6e4a05"
-  };
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      // storageBucket, messagingSenderId, appId optional
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-<script>
+    // Initialize
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
     // ---------- Simple admin gating ----------
     // We store allowed admin emails in a collection "admins" (doc id = email) for easy checking.
@@ -399,5 +396,24 @@
     adminDashboard.style.display='none';
 
   </script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBftJD6pWrx5hAwEr3ep_S8NeqeiHQrCF4",
+    authDomain: "examsk24.firebaseapp.com",
+    projectId: "examsk24",
+    storageBucket: "examsk24.firebasestorage.app",
+    messagingSenderId: "569555436896",
+    appId: "1:569555436896:web:bd3671f9d3c32daf6e4a05"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
