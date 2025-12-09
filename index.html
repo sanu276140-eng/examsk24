@@ -118,11 +118,10 @@
                     <li class="nav-item"><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)" class="nav-link">CCC Test</a></li>
                     <li class="nav-item"><a href="https://www.guruji24.com/online-tests/18/ccc-(nielit)" class="nav-link">CCC NIELIT Test</a></li>
                     <li class="nav-item">
-                        <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === true): ?>
-                            <a href="/ap-admin.html" class="nav-link" target="_blank">
-                                <i class="fas fa-cog"></i> AP
-                             </a>
-                        <?php endif; ?>
+                        <!-- Admin Button (visible only to admin) -->
+                        <a href="/admin-panel.html" id="adminButton" class="admin-btn" style="display: none;">
+                            <i class="fas fa-cog"></i>
+                        </a>
                     </li>
                 </ul>
 
@@ -351,7 +350,56 @@
             </div>
         </div>
     </footer>
+<style>
+    /* Admin Button Styles */
+.admin-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #667eea;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
+    z-index: 1000;
+    cursor: pointer;
+    text-decoration: none;
+}
 
+.admin-btn:hover {
+    transform: scale(1.1);
+    background: #764ba2;
+}
+
+/* Mobile responsive for admin button */
+@media (max-width: 768px) {
+    .admin-btn {
+        bottom: 80px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
+</style>
+<script>
+    // Check if user is admin and show admin button
+firebase.auth().onAuthStateChanged(user => {
+    const adminButton = document.getElementById('adminButton');
+    const adminEmails = ["admin@examsk24.online", "superadmin@examsk24.online"];
+    
+    if (user && adminEmails.includes(user.email)) {
+        adminButton.style.display = 'flex';
+    } else {
+        adminButton.style.display = 'none';
+    }
+});
+</script>
     <script src="script.js"></script>
    
 </body>
