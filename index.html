@@ -387,19 +387,7 @@
     }
 }
 </style>
-<script>
-    // Check if user is admin and show admin button
-firebase.auth().onAuthStateChanged(user => {
-    const adminButton = document.getElementById('adminButton');
-    const adminEmails = ["admin@examsk24.online", "superadmin@examsk24.online"];
-    
-    if (user && adminEmails.includes(user.email)) {
-        adminButton.style.display = 'flex';
-    } else {
-        adminButton.style.display = 'none';
-    }
-});
-</script>
+
     <script src="script.js"></script>
    
 </body>
