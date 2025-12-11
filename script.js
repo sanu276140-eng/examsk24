@@ -35,9 +35,7 @@ document.addEventListener('click', (e) => {
 });
 
 // Button click handlers
-document.querySelector('.btn-primary').addEventListener('click', function() {
-    window.location.href = '/gk.html';
-});
+
 
 // Add active class to current page link
 document.addEventListener('DOMContentLoaded', function() {
