@@ -35,7 +35,9 @@ document.addEventListener('click', (e) => {
 });
 
 // Button click handlers
-
+document.querySelector('.btn-primary').addEventListener('click', function() {
+    window.open('quiz/gk.html', '_blank');
+});
 
 // Add active class to current page link
 document.addEventListener('DOMContentLoaded', function() {
