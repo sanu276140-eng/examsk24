@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Challenge</title>
+    <title>Computer Knowledge Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,7 +22,7 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: white;
             border-radius: 12px;
@@ -33,23 +33,23 @@
         header {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
         
         .quiz-title {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
         
         .quiz-description {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .timer-container {
             background-color: #f0f4ff;
-            padding: 15px;
+            padding: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,18 +59,18 @@
         .timer {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
             color: #2d3748;
         }
         
         .timer i {
             color: #ff4757;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
         }
         
         .time-remaining {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: #ff4757;
         }
@@ -79,36 +79,37 @@
             text-align: right;
             font-weight: 600;
             color: #2d3748;
+            font-size: 1.1rem;
         }
         
         .quiz-content {
             display: flex;
-            min-height: 500px;
+            min-height: 600px;
         }
         
         .navigation-sidebar {
-            width: 250px;
+            width: 280px;
             background-color: #f8f9fa;
-            padding: 20px;
+            padding: 25px;
             border-right: 1px solid #e1e5eb;
         }
         
         .navigation-title {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: #2d3748;
         }
         
         .question-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
         
         .question-number {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -118,16 +119,19 @@
             font-weight: 600;
             transition: all 0.2s ease;
             border: 2px solid transparent;
+            font-size: 1rem;
         }
         
         .question-number:hover {
             background-color: #d0d7e0;
+            transform: scale(1.05);
         }
         
         .question-number.active {
             background-color: #4d7cfe;
             color: white;
             border-color: #2d5bff;
+            transform: scale(1.05);
         }
         
         .question-number.answered {
@@ -145,51 +149,54 @@
         .legend {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.85rem;
+            gap: 18px;
+            font-size: 0.9rem;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
         
         .legend-color {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 4px;
         }
         
         .question-area {
             flex: 1;
-            padding: 25px;
+            padding: 30px;
         }
         
         .question-text {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
             color: #2d3748;
             line-height: 1.5;
+            font-weight: 600;
         }
         
         .options-container {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .option {
-            padding: 15px;
-            margin-bottom: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
             background-color: #f8f9fa;
             border: 2px solid #e9ecef;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
+            font-size: 1.1rem;
         }
         
         .option:hover {
             background-color: #e9ecef;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
         
         .option.selected {
@@ -213,21 +220,22 @@
         .controls {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 35px;
+            padding-top: 25px;
             border-top: 1px solid #e9ecef;
         }
         
         .btn {
-            padding: 12px 28px;
+            padding: 14px 32px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 1.1rem;
         }
         
         .btn-prev {
@@ -237,6 +245,7 @@
         
         .btn-prev:hover:not(:disabled) {
             background-color: #e2e8f0;
+            transform: translateX(-3px);
         }
         
         .btn-next {
@@ -246,15 +255,18 @@
         
         .btn-next:hover:not(:disabled) {
             background-color: #2d5bff;
+            transform: translateX(3px);
         }
         
         .btn-submit {
             background-color: #10b981;
             color: white;
+            padding: 14px 40px;
         }
         
         .btn-submit:hover:not(:disabled) {
             background-color: #0da271;
+            transform: scale(1.05);
         }
         
         .btn:disabled {
@@ -265,48 +277,78 @@
         .mark-btn {
             background-color: #fbbf24;
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 12px 25px;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            margin-left: 10px;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mark-btn:hover {
+            background-color: #f59e0b;
+            transform: scale(1.05);
         }
         
         .summary-container {
-            padding: 25px;
+            padding: 40px;
         }
         
         .summary-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             color: #2d3748;
             text-align: center;
         }
         
         .summary-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         .stat-box {
             background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .stat-label {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #64748b;
+        }
+        
+        .correct-stat {
+            border-color: #10b981;
+        }
+        
+        .incorrect-stat {
+            border-color: #ef4444;
+        }
+        
+        .skipped-stat {
+            border-color: #fbbf24;
+        }
+        
+        .time-stat {
+            border-color: #4d7cfe;
         }
         
         .correct-stat .stat-value {
@@ -327,22 +369,23 @@
         
         .restart-btn {
             display: block;
-            margin: 30px auto 0;
+            margin: 40px auto 0;
             background-color: #4d7cfe;
             color: white;
-            padding: 14px 40px;
-            font-size: 1.1rem;
+            padding: 16px 45px;
+            font-size: 1.2rem;
         }
         
         .restart-btn:hover {
             background-color: #2d5bff;
+            transform: scale(1.05);
         }
         
         .hidden {
             display: none;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .quiz-content {
                 flex-direction: column;
             }
@@ -354,21 +397,46 @@
             }
             
             .question-grid {
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: repeat(8, 1fr);
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .question-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(6, 1fr);
             }
             
             .btn {
-                padding: 10px 20px;
+                padding: 12px 24px;
+                font-size: 1rem;
             }
             
             .question-text {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+            
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .question-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mark-btn {
+                margin-left: 0;
+                margin-top: 10px;
             }
         }
     </style>
@@ -376,18 +444,18 @@
 <body>
     <div class="container">
         <header>
-            <h1 class="quiz-title">General Knowledge Quiz</h1>
-            <p class="quiz-description">Test your knowledge with 25 questions. You have 20 minutes to complete the quiz.</p>
+            <h1 class="quiz-title">Computer Knowledge Quiz</h1>
+            <p class="quiz-description">Test your computer knowledge with 50 questions. You have 45 minutes to complete the quiz.</p>
         </header>
         
         <div class="timer-container">
             <div class="timer">
                 <i class="fas fa-clock"></i>
                 <span>Time Remaining:</span>
-                <span class="time-remaining" id="timeRemaining">20:00</span>
+                <span class="time-remaining" id="timeRemaining">45:00</span>
             </div>
             <div class="progress">
-                Question: <span id="currentQuestion">1</span> of 25
+                Question: <span id="currentQuestion">1</span> of 50
             </div>
         </div>
         
@@ -460,7 +528,7 @@
                     </div>
                     
                     <div class="stat-box time-stat">
-                        <div class="stat-value" id="timeTaken">20:00</div>
+                        <div class="stat-value" id="timeTaken">45:00</div>
                         <div class="stat-label">Time Taken</div>
                     </div>
                 </div>
@@ -473,141 +541,132 @@
     </div>
 
     <script>
-        // Quiz data
-const quizData = [
-    {
-        question: "कंप्यूटर का दिमाग किसे कहा जाता है?",
-        options: ["RAM", "CPU", "Monitor", "Keyboard"],
-        answer: 1
-    },
-    {
-        question: "किस memory को 'volatile memory' कहा जाता है?",
-        options: ["ROM", "RAM", "Hard Disk", "Pen Drive"],
-        answer: 1
-    },
-    {
-        question: "Windows में फ़ाइल delete करने पर वह कहाँ जाती है?",
-        options: ["My Computer", "Recycle Bin", "Desktop", "Control Panel"],
-        answer: 1
-    },
-    {
-        question: "HTTP का पूरा नाम क्या है?",
-        options: ["Hyper Text Transfer Protocol", "High Text Transfer Program", "Hyper Terminal Transfer Path", "High Transfer Text Protocol"],
-        answer: 0
-    },
-    {
-        question: "कंप्यूटर में सबसे छोटी जानकारी की इकाई क्या है?",
-        options: ["Bit", "Byte", "KB", "MB"],
-        answer: 0
-    },
-    {
-        question: "MS Word किस प्रकार का software है?",
-        options: ["Operating System", "Application Software", "Compiler", "Device Driver"],
-        answer: 1
-    },
-    {
-        question: "URL का पूरा नाम क्या है?",
-        options: ["Universal Resource Link", "Uniform Resource Locator", "Uniform Record Locator", "Universal Record Link"],
-        answer: 1
-    },
-    {
-        question: "किस device को Input device कहा जाता है?",
-        options: ["Monitor", "Printer", "Keyboard", "Speaker"],
-        answer: 2
-    },
-    {
-        question: "कंप्यूटर का स्थायी memory कौन सा है?",
-        options: ["RAM", "ROM", "Cache", "CPU"],
-        answer: 1
-    },
-    {
-        question: "कंप्यूटर वायरस क्या है?",
-        options: ["Hardware", "Software", "Application", "Operating System"],
-        answer: 1
-    },
-    {
-        question: "PDF का पूरा नाम क्या है?",
-        options: ["Portable Document Format", "Printed Document File", "Public Data File", "Portable Data Format"],
-        answer: 0
-    },
-    {
-        question: "कौन सा software फोटो एडिट करने के लिए उपयोग होता है?",
-        options: ["MS Word", "Photoshop", "MS Excel", "Chrome"],
-        answer: 1
-    },
-    {
-        question: "IP address कितने bits का होता है (IPv4)?",
-        options: ["16 bit", "32 bit", "64 bit", "128 bit"],
-        answer: 1
-    },
-    {
-        question: "CTRL + C का उपयोग किस लिए किया जाता है?",
-        options: ["Paste", "Copy", "Cut", "Close"],
-        answer: 1
-    },
-    {
-        question: "Spreadsheet software कौन सा है?",
-        options: ["MS Excel", "MS Word", "PowerPoint", "Notepad"],
-        answer: 0
-    },
-    {
-        question: " कंप्यूटर में उपयोग होने वाली संख्या प्रणाली कौन सी है?",
-        options: ["Decimal", "Binary", "Octal", "Roman"],
-        answer: 1
-    },
-    {
-        question: "Microsoft का founder कौन है?",
-        options: ["Steve Jobs", "Bill Gates", "Larry Page", "Mark Zuckerberg"],
-        answer: 1
-    },
-    {
-        question: "कंप्यूटर में हार्ड डिस्क क्या है?",
-        options: ["Input Device", "Output Device", "Storage Device", "Processing Device"],
-        answer: 2
-    },
-    {
-        question: "कंप्यूटर में डेटा को अस्थायी रूप से कहाँ रखा जाता है?",
-        options: ["RAM", "ROM", "Hard Disk", "CD"],
-        answer: 0
-    },
-    {
-        question: "Search engine कौन सा है?",
-        options: ["Facebook", "Google", "WhatsApp", "Instagram"],
-        answer: 1
-    },
-    {
-        question: "WWW का पूरा नाम क्या है?",
-        options: ["World Whole Web", "World Wide Web", "Web Wide World", "World Web Wide"],
-        answer: 1
-    },
-    {
-        question: "कंप्यूटर नेटवर्क में LAN का मतलब?",
-        options: ["Local Area Network", "Large Area Network", "Long Area Network", "Light Area Network"],
-        answer: 0
-    },
-    {
-        question: "PowerPoint फ़ाइल का extension क्या होता है?",
-        options: [".xlsx", ".pptx", ".txt", ".docx"],
-        answer: 1
-    },
-    {
-        question: "कीबोर्ड में कौन सा key editing के लिए उपयोग होता है?",
-        options: ["Enter", "Shift", "Backspace", "Tab"],
-        answer: 2
-    },
-    {
-        question: "Email भेजने के लिए कौन सा protocol उपयोग होता है?",
-        options: ["SMTP", "FTP", "HTTP", "POP"],
-        answer: 0
-    }
-];
+        // Large pool of Computer Questions in Hindi (100+ questions)
+        const questionPool = [
+            // First 10 questions
+            { question: "कंप्यूटर का जनक किसे कहा जाता है?", options: ["चार्ल्स बैबेज", "बिल गेट्स", "स्टीव जॉब्स", "एलन ट्यूरिंग"], answer: 0 },
+            { question: "कंप्यूटर का मस्तिष्क क्या कहलाता है?", options: ["RAM", "CPU", "हार्ड डिस्क", "मॉनिटर"], answer: 1 },
+            { question: "CPU का पूरा नाम क्या है?", options: ["Central Process Unit", "Central Processing Unit", "Computer Processing Unit", "Control Processing Unit"], answer: 1 },
+            { question: "कंप्यूटर में डेटा किस रूप में संग्रहित होता है?", options: ["अक्षर", "संख्या", "बाइनरी", "चित्र"], answer: 2 },
+            { question: "बाइनरी सिस्टम में कितने अंक होते हैं?", options: ["10", "8", "2", "16"], answer: 2 },
+            { question: "कंप्यूटर की अस्थायी स्मृति क्या कहलाती है?", options: ["ROM", "Hard Disk", "RAM", "Pen Drive"], answer: 2 },
+            { question: "ROM का पूरा नाम क्या है?", options: ["Read Only Memory", "Random Only Memory", "Read Open Memory", "Run Only Memory"], answer: 0 },
+            { question: "इनपुट डिवाइस कौन सा है?", options: ["मॉनिटर", "प्रिंटर", "कीबोर्ड", "स्पीकर"], answer: 2 },
+            { question: "आउटपुट डिवाइस कौन सा है?", options: ["माउस", "कीबोर्ड", "CPU", "प्रिंटर"], answer: 3 },
+            { question: "कंप्यूटर चालू करने की प्रक्रिया क्या कहलाती है?", options: ["शटडाउन", "रीस्टार्ट", "बूटिंग", "लॉगऑफ"], answer: 2 },
+
+            // Questions 11-20
+            { question: "Windows किस प्रकार का सॉफ्टवेयर है?", options: ["एप्लीकेशन", "यूटिलिटी", "ऑपरेटिंग सिस्टम", "ड्राइवर"], answer: 2 },
+            { question: "MS Word किस काम आता है?", options: ["चित्र बनाने", "डाटा स्टोर करने", "दस्तावेज़ बनाने", "गणना करने"], answer: 2 },
+            { question: "MS Excel का उपयोग किस लिए होता है?", options: ["ड्राइंग", "स्प्रेडशीट", "प्रेजेंटेशन", "ईमेल"], answer: 1 },
+            { question: "MS PowerPoint का उपयोग किस लिए होता है?", options: ["गणना", "प्रेजेंटेशन", "डाटाबेस", "ईमेल"], answer: 1 },
+            { question: "कंप्यूटर वायरस क्या है?", options: ["हार्डवेयर", "सॉफ्टवेयर", "हानिकारक प्रोग्राम", "एप्लीकेशन"], answer: 2 },
+            { question: "एंटीवायरस का उपयोग क्यों किया जाता है?", options: ["फाइल डिलीट", "वायरस हटाने", "स्पीड बढ़ाने", "डाटा सेव"], answer: 1 },
+            { question: "इंटरनेट क्या है?", options: ["नेटवर्क", "वैश्विक नेटवर्क", "सॉफ्टवेयर", "हार्डवेयर"], answer: 1 },
+            { question: "WWW का पूरा नाम क्या है?", options: ["World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide"], answer: 0 },
+            { question: "ई-मेल का उपयोग किस लिए होता है?", options: ["गेम", "संदेश भेजने", "गणना", "ड्राइंग"], answer: 1 },
+            { question: "ई-मेल का आविष्कार किसने किया?", options: ["रे टॉमलिनसन", "बिल गेट्स", "टिम बर्नर्स ली", "चार्ल्स बैबेज"], answer: 0 },
+
+            // Questions 21-30
+            { question: "गूगल क्या है?", options: ["ब्राउज़र", "सर्च इंजन", "ऑपरेटिंग सिस्टम", "एंटीवायरस"], answer: 1 },
+            { question: "कंप्यूटर में चित्र किस फॉर्मेट में सेव होते हैं?", options: ["DOC", "MP3", "JPG", "EXE"], answer: 2 },
+            { question: "हार्ड डिस्क किस प्रकार की मेमोरी है?", options: ["अस्थायी", "स्थायी", "कैश", "रजिस्टर"], answer: 1 },
+            { question: "पेन ड्राइव किसका उदाहरण है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसर"], answer: 2 },
+            { question: "कंप्यूटर की गति किसमें मापी जाती है?", options: ["मीटर", "हर्ट्ज़", "सेकंड", "बाइट"], answer: 1 },
+            { question: "कंप्यूटर बंद करने की प्रक्रिया क्या कहलाती है?", options: ["बूटिंग", "लॉगिन", "शटडाउन", "रीसेट"], answer: 2 },
+            { question: "पासवर्ड का उपयोग क्यों किया जाता है?", options: ["मनोरंजन", "सुरक्षा", "गति", "स्टोरेज"], answer: 1 },
+            { question: "फायरवॉल का काम क्या है?", options: ["वायरस बनाना", "इंटरनेट रोकना", "सुरक्षा देना", "डाटा डिलीट"], answer: 2 },
+            { question: "ब्राउज़र का उदाहरण कौन सा है?", options: ["Windows", "Google Chrome", "MS Word", "Linux"], answer: 1 },
+            { question: "कंप्यूटर में 1 KB बराबर कितना होता है?", options: ["1000 बाइट", "1024 बाइट", "512 बाइट", "2048 बाइट"], answer: 1 },
+
+            // Questions 31-40
+            { question: "ऑपरेटिंग सिस्टम का मुख्य कार्य क्या है?", options: ["गेम खेलना", "हार्डवेयर नियंत्रित करना", "चित्र बनाना", "ईमेल भेजना"], answer: 1 },
+            { question: "Linux क्या है?", options: ["हार्डवेयर", "ऑपरेटिंग सिस्टम", "ब्राउज़र", "एंटीवायरस"], answer: 1 },
+            { question: "कंप्यूटर नेटवर्क क्या है?", options: ["एक कंप्यूटर", "कई कंप्यूटरों का समूह", "सॉफ्टवेयर", "हार्ड डिस्क"], answer: 1 },
+            { question: "LAN का पूरा नाम क्या है?", options: ["Local Area Network", "Large Area Network", "Long Area Network", "Light Area Network"], answer: 0 },
+            { question: "WAN का पूरा नाम क्या है?", options: ["Wide Area Network", "World Area Network", "Web Area Network", "Wire Area Network"], answer: 0 },
+            { question: "मोबाइल में इस्तेमाल होने वाला OS कौन सा है?", options: ["Windows", "Android", "Linux", "DOS"], answer: 1 },
+            { question: "DOS का पूरा नाम क्या है?", options: ["Disk Operating System", "Data Operating System", "Direct Operating System", "Dual Operating System"], answer: 0 },
+            { question: "कंप्यूटर में गणना कौन करता है?", options: ["RAM", "ALU", "ROM", "Monitor"], answer: 1 },
+            { question: "ALU का पूरा नाम क्या है?", options: ["Arithmetic Logic Unit", "Advanced Logic Unit", "Auto Logic Unit", "Array Logic Unit"], answer: 0 },
+            { question: "कंप्यूटर में फाइल हटाने को क्या कहते हैं?", options: ["कॉपी", "पेस्ट", "डिलीट", "सेव"], answer: 2 },
+
+            // Questions 41-50
+            { question: "Ctrl + C का उपयोग किस लिए होता है?", options: ["कट", "कॉपी", "पेस्ट", "सेव"], answer: 1 },
+            { question: "Ctrl + V का उपयोग किस लिए होता है?", options: ["कॉपी", "कट", "पेस्ट", "सेव"], answer: 2 },
+            { question: "Ctrl + X का उपयोग किस लिए होता है?", options: ["कॉपी", "कट", "पेस्ट", "ओपन"], answer: 1 },
+            { question: "Ctrl + S का उपयोग किस लिए होता है?", options: ["सेव", "शटडाउन", "सर्च", "सेलेक्ट"], answer: 0 },
+            { question: "Ctrl + Z का उपयोग किस लिए होता है?", options: ["रीडू", "अंडू", "कट", "कॉपी"], answer: 1 },
+            { question: "इंटरनेट एक्सप्लोरर क्या है?", options: ["ऑपरेटिंग सिस्टम", "ब्राउज़र", "एंटीवायरस", "डाटाबेस"], answer: 1 },
+            { question: "URL का पूरा नाम क्या है?", options: ["Uniform Resource Locator", "Universal Resource Locator", "Unique Resource Locator", "United Resource Locator"], answer: 0 },
+            { question: "HTTP का पूरा नाम क्या है?", options: ["Hyper Text Transfer Protocol", "High Text Transfer Protocol", "Hyper Transfer Text Protocol", "High Transfer Text Protocol"], answer: 0 },
+            { question: "PDF फाइल क्या है?", options: ["प्रोग्राम फाइल", "दस्तावेज़ फाइल", "चित्र फाइल", "वीडियो फाइल"], answer: 1 },
+            { question: "कंप्यूटर में माउस का आविष्कार किसने किया?", options: ["डगलस एंगेलबार्ट", "बिल गेट्स", "स्टीव जॉब्स", "चार्ल्स बैबेज"], answer: 0 },
+
+            // Additional questions 51-70
+            { question: "कंप्यूटर की भौतिक संरचना को क्या कहते हैं?", options: ["सॉफ्टवेयर", "हार्डवेयर", "फर्मवेयर", "मिडिलवेयर"], answer: 1 },
+            { question: "RAM और ROM में क्या अंतर है?", options: ["RAM स्थायी, ROM अस्थायी", "ROM स्थायी, RAM अस्थायी", "दोनों स्थायी", "दोनों अस्थायी"], answer: 1 },
+            { question: "कंप्यूटर में कितने प्रकार की मेमोरी होती है?", options: ["1", "2", "3", "4"], answer: 1 },
+            { question: "ब्लूटूथ क्या है?", options: ["वायरलेस तकनीक", "कंप्यूटर वायरस", "ऑपरेटिंग सिस्टम", "ब्राउज़र"], answer: 0 },
+            { question: "कंप्यूटर की भाषा कौन सी है?", options: ["हिन्दी", "अंग्रेजी", "मशीनी भाषा", "संस्कृत"], answer: 2 },
+            { question: "कंप्यूटर में प्रयुक्त IC चिप किससे बनी होती है?", options: ["सिलिकॉन", "लोहा", "तांबा", "सोना"], answer: 0 },
+            { question: "कंप्यूटर के आविष्कार का मुख्य उद्देश्य क्या था?", options: ["गेम खेलना", "गणना करना", "चित्र बनाना", "संगीत सुनना"], answer: 1 },
+            { question: "कंप्यूटर में वायरस कैसे फैलता है?", options: ["हवा से", "दूषित भोजन से", "संक्रमित फाइलों से", "पानी से"], answer: 2 },
+            { question: "कंप्यूटर का पहला प्रोग्राम किसने लिखा?", options: ["चार्ल्स बैबेज", "एडा लवलेस", "बिल गेट्स", "स्टीव जॉब्स"], answer: 1 },
+            { question: "कंप्यूटर में BIOS का क्या काम है?", options: ["गेम खेलना", "बूट प्रक्रिया शुरू करना", "इंटरनेट चलाना", "प्रिंट करना"], answer: 1 },
+
+            // Additional questions 71-90
+            { question: "कंप्यूटर स्क्रीन की चमक को क्या कहते हैं?", options: ["ब्राइटनेस", "कंट्रास्ट", "रिजॉल्यूशन", "रिफ्रेश रेट"], answer: 0 },
+            { question: "कंप्यूटर में डेटा स्थानांतरण की गति किसमें मापी जाती है?", options: ["हर्ट्ज़", "बाइट्स प्रति सेकंड", "मीटर प्रति सेकंड", "वाट"], answer: 1 },
+            { question: "वेबसाइट का पता क्या कहलाता है?", options: ["URL", "HTTP", "HTML", "WWW"], answer: 0 },
+            { question: "कंप्यूटर की सबसे छोटी इकाई क्या है?", options: ["बाइट", "बिट", "निबल", "किलोबाइट"], answer: 1 },
+            { question: "कंप्यूटर में 1 MB बराबर कितना होता है?", options: ["1000 KB", "1024 KB", "512 KB", "2048 KB"], answer: 1 },
+            { question: "कंप्यूटर में प्रयुक्त बारकोड रीडर क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर की प्रथम पीढ़ी में किसका प्रयोग हुआ?", options: ["ट्रांजिस्टर", "वैक्यूम ट्यूब", "IC", "माइक्रोप्रोसेसर"], answer: 1 },
+            { question: "कंप्यूटर में कैश मेमोरी क्या है?", options: ["स्थायी मेमोरी", "बहुत तेज मेमोरी", "धीमी मेमोरी", "बाहरी मेमोरी"], answer: 1 },
+            { question: "कंप्यूटर में फ़ोल्डर क्या है?", options: ["फाइलों का समूह", "एक प्रोग्राम", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर की द्वितीय पीढ़ी में किसका प्रयोग हुआ?", options: ["ट्रांजिस्टर", "वैक्यूम ट्यूब", "IC", "माइक्रोप्रोसेसर"], answer: 0 },
+
+            // Additional questions 91-110
+            { question: "कंप्यूटर की तृतीय पीढ़ी में किसका प्रयोग हुआ?", options: ["ट्रांजिस्टर", "वैक्यूम ट्यूब", "IC", "माइक्रोप्रोसेसर"], answer: 2 },
+            { question: "कंप्यूटर की चतुर्थ पीढ़ी में किसका प्रयोग हुआ?", options: ["ट्रांजिस्टर", "वैक्यूम ट्यूब", "IC", "माइक्रोप्रोसेसर"], answer: 3 },
+            { question: "कंप्यूटर में अधिकतम कितने प्रकार के सॉफ्टवेयर होते हैं?", options: ["1", "2", "3", "4"], answer: 1 },
+            { question: "कंप्यूटर में प्रयुक्त स्कैनर क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त प्रोजेक्टर क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 1 },
+            { question: "कंप्यूटर में प्रयुक्त मॉडेम क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "संचार डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 2 },
+            { question: "कंप्यूटर में प्रयुक्त प्लॉटर क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 1 },
+            { question: "कंप्यूटर में प्रयुक्त जॉयस्टिक क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त टचस्क्रीन क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "दोनों", "कोई नहीं"], answer: 2 },
+            { question: "कंप्यूटर में प्रयुक्त लाइट पेन क्या है?", options: ["इनपुट डिवाइस", "आउटपुट डिवाइस", "स्टोरेज डिवाइस", "प्रोसेसिंग डिवाइस"], answer: 0 },
+
+            // Additional questions 111-130
+            { question: "कंप्यूटर में ASCII का पूरा नाम क्या है?", options: ["American Standard Code for Information Interchange", "Asian Standard Code for Information Interchange", "American Simple Code for Information Interchange", "Asian Simple Code for Information Interchange"], answer: 0 },
+            { question: "कंप्यूटर में EBCDIC का पूरा नाम क्या है?", options: ["Extended Binary Coded Decimal Interchange Code", "Extended Binary Coded Digit Interchange Code", "Extended Bit Coded Decimal Interchange Code", "Extended Byte Coded Decimal Interchange Code"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त बस (BUS) क्या है?", options: ["डेटा मार्ग", "एक प्रोग्राम", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त पोर्ट (PORT) क्या है?", options: ["कनेक्शन बिंदु", "एक प्रोग्राम", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त रजिस्टर क्या है?", options: ["अस्थायी भंडारण क्षेत्र", "स्थायी भंडारण क्षेत्र", "एक प्रोग्राम", "एक वायरस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त कैरी फ्लैग क्या है?", options: ["एक रजिस्टर", "एक प्रोग्राम", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त जम्प इंस्ट्रक्शन क्या है?", options: ["नियंत्रण हस्तांतरण", "डेटा हस्तांतरण", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त कॉल इंस्ट्रक्शन क्या है?", options: ["सबरूटीन कॉल", "डेटा हस्तांतरण", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त रिटर्न इंस्ट्रक्शन क्या है?", options: ["सबरूटीन से वापसी", "डेटा हस्तांतरण", "एक वायरस", "एक डिवाइस"], answer: 0 },
+            { question: "कंप्यूटर में प्रयुक्त हॉल्ट इंस्ट्रक्शन क्या है?", options: ["प्रोसेसर रोकना", "डेटा हस्तांतरण", "एक वायरस", "एक डिवाइस"], answer: 0 }
+        ];
+
+        // Function to get random questions from pool
+        function getRandomQuestions(pool, count) {
+            const shuffled = [...pool].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // Create random quiz data (50 questions from pool)
+        let quizData = getRandomQuestions(questionPool, 50);
 
         // Quiz state
         let currentQuestionIndex = 0;
         let userAnswers = new Array(quizData.length).fill(null);
         let markedQuestions = new Array(quizData.length).fill(false);
         let timerInterval;
-        let timeLeft = 20 * 60; // 20 minutes in seconds
+        let timeLeft = 45 * 60; // 45 minutes in seconds
         let quizCompleted = false;
 
         // DOM Elements
@@ -791,6 +850,12 @@ const quizData = [
             // Change color when time is running low
             if (timeLeft < 300) { // Less than 5 minutes
                 timeRemainingSpan.style.color = '#ff4757';
+                timeRemainingSpan.style.animation = 'pulse 1s infinite';
+            } else if (timeLeft < 600) { // Less than 10 minutes
+                timeRemainingSpan.style.color = '#ffa502';
+            } else {
+                timeRemainingSpan.style.color = '#ff4757';
+                timeRemainingSpan.style.animation = 'none';
             }
         }
 
@@ -849,15 +914,21 @@ const quizData = [
             skippedCountSpan.textContent = skipped;
             
             // Calculate time taken
-            const totalTime = 20 * 60; // 20 minutes in seconds
+            const totalTime = 45 * 60; // 45 minutes in seconds
             const timeTaken = totalTime - timeLeft;
             const minutesTaken = Math.floor(timeTaken / 60);
             const secondsTaken = timeTaken % 60;
             timeTakenSpan.textContent = `${minutesTaken.toString().padStart(2, '0')}:${secondsTaken.toString().padStart(2, '0')}`;
             
+            // Calculate percentage
+            const percentage = ((correct / quizData.length) * 100).toFixed(1);
+            
             // Show summary
             questionArea.classList.add('hidden');
             summaryContainer.classList.remove('hidden');
+            
+            // Add percentage to title
+            document.querySelector('.summary-title').textContent = `Quiz Summary - ${percentage}% Score`;
         }
 
         // Restart quiz
@@ -866,8 +937,11 @@ const quizData = [
             currentQuestionIndex = 0;
             userAnswers = new Array(quizData.length).fill(null);
             markedQuestions = new Array(quizData.length).fill(false);
-            timeLeft = 20 * 60;
+            timeLeft = 45 * 60;
             quizCompleted = false;
+            
+            // Get new random questions for restart
+            quizData = getRandomQuestions(questionPool, 50);
             
             // Clear question numbers and recreate
             questionNav.innerHTML = '';
@@ -875,6 +949,7 @@ const quizData = [
             
             // Reset timer display
             timeRemainingSpan.style.color = '#ff4757';
+            timeRemainingSpan.style.animation = 'none';
             
             // Hide summary, show questions
             summaryContainer.classList.add('hidden');
@@ -887,7 +962,21 @@ const quizData = [
             // Load first question
             loadQuestion(currentQuestionIndex);
             updateNavigation();
+            
+            // Reset title
+            document.querySelector('.summary-title').textContent = 'Quiz Summary';
         });
+
+        // Add CSS animation for timer
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { opacity: 1; }
+                50% { opacity: 0.5; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Initialize quiz on page load
         document.addEventListener('DOMContentLoaded', initQuiz);

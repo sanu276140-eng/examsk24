@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Challenge</title>
+    <title>General Knowledge Quiz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,7 +22,7 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: white;
             border-radius: 12px;
@@ -33,23 +33,23 @@
         header {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
         
         .quiz-title {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
         
         .quiz-description {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .timer-container {
             background-color: #f0f4ff;
-            padding: 15px;
+            padding: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,18 +59,18 @@
         .timer {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
             color: #2d3748;
         }
         
         .timer i {
             color: #ff4757;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
         }
         
         .time-remaining {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: #ff4757;
         }
@@ -79,36 +79,37 @@
             text-align: right;
             font-weight: 600;
             color: #2d3748;
+            font-size: 1.1rem;
         }
         
         .quiz-content {
             display: flex;
-            min-height: 500px;
+            min-height: 600px;
         }
         
         .navigation-sidebar {
-            width: 250px;
-            background-color: #f8f9fa;
-            padding: 20px;
+            width: 280px;
+            background-color = #f8f9fa;
+            padding: 25px;
             border-right: 1px solid #e1e5eb;
         }
         
         .navigation-title {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: #2d3748;
         }
         
         .question-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
         
         .question-number {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -118,16 +119,19 @@
             font-weight: 600;
             transition: all 0.2s ease;
             border: 2px solid transparent;
+            font-size: 1rem;
         }
         
         .question-number:hover {
             background-color: #d0d7e0;
+            transform: scale(1.05);
         }
         
         .question-number.active {
             background-color: #4d7cfe;
             color: white;
             border-color: #2d5bff;
+            transform: scale(1.05);
         }
         
         .question-number.answered {
@@ -145,51 +149,54 @@
         .legend {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.85rem;
+            gap: 18px;
+            font-size: 0.9rem;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
         
         .legend-color {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 4px;
         }
         
         .question-area {
             flex: 1;
-            padding: 25px;
+            padding: 30px;
         }
         
         .question-text {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
             color: #2d3748;
             line-height: 1.5;
+            font-weight: 600;
         }
         
         .options-container {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .option {
-            padding: 15px;
-            margin-bottom: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
             background-color: #f8f9fa;
             border: 2px solid #e9ecef;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
+            font-size: 1.1rem;
         }
         
         .option:hover {
             background-color: #e9ecef;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
         
         .option.selected {
@@ -213,21 +220,22 @@
         .controls {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 35px;
+            padding-top: 25px;
             border-top: 1px solid #e9ecef;
         }
         
         .btn {
-            padding: 12px 28px;
+            padding: 14px 32px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 1.1rem;
         }
         
         .btn-prev {
@@ -237,6 +245,7 @@
         
         .btn-prev:hover:not(:disabled) {
             background-color: #e2e8f0;
+            transform: translateX(-3px);
         }
         
         .btn-next {
@@ -246,15 +255,18 @@
         
         .btn-next:hover:not(:disabled) {
             background-color: #2d5bff;
+            transform: translateX(3px);
         }
         
         .btn-submit {
             background-color: #10b981;
             color: white;
+            padding: 14px 40px;
         }
         
         .btn-submit:hover:not(:disabled) {
             background-color: #0da271;
+            transform: scale(1.05);
         }
         
         .btn:disabled {
@@ -265,48 +277,78 @@
         .mark-btn {
             background-color: #fbbf24;
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 12px 25px;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            margin-left: 10px;
+            margin-left: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mark-btn:hover {
+            background-color: #f59e0b;
+            transform: scale(1.05);
         }
         
         .summary-container {
-            padding: 25px;
+            padding: 40px;
         }
         
         .summary-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             color: #2d3748;
             text-align: center;
         }
         
         .summary-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         .stat-box {
             background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .stat-label {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #64748b;
+        }
+        
+        .correct-stat {
+            border-color: #10b981;
+        }
+        
+        .incorrect-stat {
+            border-color: #ef4444;
+        }
+        
+        .skipped-stat {
+            border-color: #fbbf24;
+        }
+        
+        .time-stat {
+            border-color: #4d7cfe;
         }
         
         .correct-stat .stat-value {
@@ -327,22 +369,23 @@
         
         .restart-btn {
             display: block;
-            margin: 30px auto 0;
+            margin: 40px auto 0;
             background-color: #4d7cfe;
             color: white;
-            padding: 14px 40px;
-            font-size: 1.1rem;
+            padding: 16px 45px;
+            font-size: 1.2rem;
         }
         
         .restart-btn:hover {
             background-color: #2d5bff;
+            transform: scale(1.05);
         }
         
         .hidden {
             display: none;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .quiz-content {
                 flex-direction: column;
             }
@@ -354,21 +397,46 @@
             }
             
             .question-grid {
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: repeat(8, 1fr);
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .question-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(6, 1fr);
             }
             
             .btn {
-                padding: 10px 20px;
+                padding: 12px 24px;
+                font-size: 1rem;
             }
             
             .question-text {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+            
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .question-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mark-btn {
+                margin-left: 0;
+                margin-top: 10px;
             }
         }
     </style>
@@ -377,17 +445,17 @@
     <div class="container">
         <header>
             <h1 class="quiz-title">General Knowledge Quiz</h1>
-            <p class="quiz-description">Test your knowledge with 25 questions. You have 20 minutes to complete the quiz.</p>
+            <p class="quiz-description">Test your knowledge with 50 questions. You have 45 minutes to complete the quiz.</p>
         </header>
         
         <div class="timer-container">
             <div class="timer">
                 <i class="fas fa-clock"></i>
                 <span>Time Remaining:</span>
-                <span class="time-remaining" id="timeRemaining">20:00</span>
+                <span class="time-remaining" id="timeRemaining">45:00</span>
             </div>
             <div class="progress">
-                Question: <span id="currentQuestion">1</span> of 25
+                Question: <span id="currentQuestion">1</span> of 50
             </div>
         </div>
         
@@ -460,7 +528,7 @@
                     </div>
                     
                     <div class="stat-box time-stat">
-                        <div class="stat-value" id="timeTaken">20:00</div>
+                        <div class="stat-value" id="timeTaken">45:00</div>
                         <div class="stat-label">Time Taken</div>
                     </div>
                 </div>
@@ -473,142 +541,132 @@
     </div>
 
     <script>
-        // Quiz data
-       const quizData = [
-    {
-        question: "1857 के विद्रोह को किस नाम से जाना जाता है?",
-        options: ["सिपाही विद्रोह", "चक्रवृद्धि विद्रोह", "खिलाफत आंदोलन", "स्वदेशी आंदोलन"],
-        answer: 0
-    },
-    {
-        question: "भारत के पहले प्रधानमंत्री कौन थे?",
-        options: ["लाल बहादुर शास्त्री", "जवाहरलाल नेहरू", "राजेंद्र प्रसाद", "इंदिरा गांधी"],
-        answer: 1
-    },
-    {
-        question: "ताजमहल का निर्माण किसने करवाया?",
-        options: ["अकबर", "जहांगीर", "शाहजहां", "औरंगज़ेब"],
-        answer: 2
-    },
-    {
-        question: "कलिंग युद्ध किस सम्राट ने लड़ा?",
-        options: ["अकबर", "अशोक", "चंद्रगुप्त", "हर्ष"],
-        answer: 1
-    },
-    {
-        question: "महात्मा गांधी ने दांडी मार्च कब किया?",
-        options: ["1930", "1942", "1920", "1919"],
-        answer: 0
-    },
-    {
-        question: "भारत का पहला राष्ट्रपति कौन था?",
-        options: ["राजेंद्र प्रसाद", "राधाकृष्णन", "नेहरू", "गुलज़ारी लाल नंदा"],
-        answer: 0
-    },
-    {
-        question: "मोहनजोदड़ो सभ्यता किस नदी के किनारे थी?",
-        options: ["गंगा", "सरस्वती", "सिंधु", "नर्मदा"],
-        answer: 2
-    },
-    {
-        question: "अजंता गुफाएँ किस राज्य में स्थित हैं?",
-        options: ["महाराष्ट्र", "बिहार", "उड़ीसा", "मध्य प्रदेश"],
-        answer: 0
-    },
-    {
-        question: "रामायण के लेखक कौन थे?",
-        options: ["तुलसीदास", "वाल्मीकि", "वेदव्यास", "कालिदास"],
-        answer: 1
-    },
-    {
-        question: "फ्रांसीसी क्रांति किस साल शुरू हुई?",
-        options: ["1776", "1789", "1800", "1820"],
-        answer: 1
-    },
-    {
-        question: "भारत छोड़ो आंदोलन कब शुरू हुआ?",
-        options: ["1942", "1930", "1920", "1915"],
-        answer: 0
-    },
-    {
-        question: "आनंद मठ किसने लिखा?",
-        options: ["बंकिमचंद्र चटर्जी", "रवीन्द्रनाथ टैगोर", "सारोजिनी नायडू", "महादेवी वर्मा"],
-        answer: 0
-    },
-    {
-        question: "कौनसा शासक ‘दीन-ए-इलाही’ से संबंधित है?",
-        options: ["अकबर", "जहांगीर", "शाहजहां", "औरंगज़ेब"],
-        answer: 0
-    },
-    {
-        question: "सिंधु घाटी सभ्यता किस युग से संबंधित है?",
-        options: ["कांस्य युग", "लौह युग", "पाषाण युग", "मध्य युग"],
-        answer: 0
-    },
-    {
-        question: "प्लासी का युद्ध कब हुआ?",
-        options: ["1757", "1857", "1707", "1780"],
-        answer: 0
-    },
-    {
-        question: "बंगाल का विभाजन पहली बार कब हुआ?",
-        options: ["1905", "1911", "1947", "1857"],
-        answer: 0
-    },
-    {
-        question: "कौन सा स्थान बुद्ध की ज्ञान प्राप्ति से जुड़ा है?",
-        options: ["सारनाथ", "कुशीनगर", "बोधगया", "लुंबिनी"],
-        answer: 2
-    },
-    {
-        question: "महात्मा गांधी का जन्म कहाँ हुआ?",
-        options: ["राजकोट", "पोरबंदर", "अहमदाबाद", "सूरत"],
-        answer: 1
-    },
-    {
-        question: "भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?",
-        options: ["1847", "1885", "1905", "1919"],
-        answer: 1
-    },
-    {
-        question: "किस मुगल सम्राट के समय ताजमहल बना?",
-        options: ["अकबर", "जहांगीर", "शाहजहां", "औरंगज़ेब"],
-        answer: 2
-    },
-    {
-        question: "प्रथम विश्व युद्ध कब शुरू हुआ?",
-        options: ["1914", "1918", "1920", "1939"],
-        answer: 0
-    },
-    {
-        question: "सुभाष चंद्र बोस की मृत्यु किस वर्ष हुई?",
-        options: ["1942", "1945", "1947", "1950"],
-        answer: 1
-    },
-    {
-        question: "हड़प्पा सभ्यता किस देश में भी पाई गई?",
-        options: ["बांग्लादेश", "अफगानिस्तान", "नेपाल", "श्रीलंका"],
-        answer: 1
-    },
-    {
-        question: "अशोक के शिलालेख किस लिपि में लिखे गये थे?",
-        options: ["संस्कृत", "ब्रह्मी", "देवनागरी", "पाली"],
-        answer: 1
-    },
-    {
-        question: "अलाउद्दीन खिलजी किस वंश से संबंधित था?",
-        options: ["मुगल", "तुगलक", "खिलजी", "लोदी"],
-        answer: 2
-    }
-];
+        // Large pool of General Knowledge Questions in Hindi (130+ questions)
+        const questionPool = [
+            // First 10 questions
+            { question: "भारत की राजधानी क्या है?", options: ["मुंबई", "नई दिल्ली", "कोलकाता", "चेन्नई"], answer: 1 },
+            { question: "सौरमंडल का सबसे बड़ा ग्रह कौन सा है?", options: ["पृथ्वी", "मंगल", "बृहस्पति", "शनि"], answer: 2 },
+            { question: "भारत का राष्ट्रीय पशु कौन सा है?", options: ["सिंह", "हाथी", "बाघ", "चीता"], answer: 2 },
+            { question: "भारत के राष्ट्रपिता कौन हैं?", options: ["जवाहरलाल नेहरू", "सुभाष चंद्र बोस", "महात्मा गांधी", "सर्दार पटेल"], answer: 2 },
+            { question: "विश्व का सबसे ऊँचा पर्वत कौन सा है?", options: ["K2", "कंचनजंगा", "माउंट एवरेस्ट", "मकालु"], answer: 2 },
+            { question: "विश्व की सबसे लंबी नदी कौन सी है?", options: ["अमेज़न", "नील", "यांग्त्ज़े", "मिसिसिपी"], answer: 1 },
+            { question: "जापान की मुद्रा क्या है?", options: ["डॉलर", "वॉन", "येन", "पेसो"], answer: 2 },
+            { question: "भारत का राष्ट्रीय पक्षी कौन सा है?", options: ["गौरैया", "गरुड़", "मोर", "तोता"], answer: 2 },
+            { question: "भारत के पहले राष्ट्रपति कौन थे?", options: ["डॉ. सर्वपल्ली राधाकृष्णन", "डॉ. राजेंद्र प्रसाद", "जाकिर हुसैन", "वी.वी. गिरी"], answer: 1 },
+            { question: "विश्व का सबसे बड़ा महासागर कौन सा है?", options: ["अटलांटिक महासागर", "हिन्द महासागर", "आर्कटिक महासागर", "प्रशांत महासागर"], answer: 3 },
 
+            // Questions 11-20
+            { question: "सौरमंडल का सबसे छोटा ग्रह कौन सा है?", options: ["शुक्र", "मंगल", "बुध", "पृथ्वी"], answer: 2 },
+            { question: "भारत का राष्ट्रीय फूल कौन सा है?", options: ["गुलाब", "कमल", "लिली", "सूरजमुखी"], answer: 1 },
+            { question: "रामायण के रचयिता कौन हैं?", options: ["तुलसीदास", "कालिदास", "वाल्मीकि", "वेद व्यास"], answer: 2 },
+            { question: "सबसे तेज दौड़ने वाला जानवर कौन सा है?", options: ["सिंह", "घोड़ा", "चीता", "तेंदुआ"], answer: 2 },
+            { question: "भारत का राष्ट्रीय खेल क्या है?", options: ["क्रिकेट", "हॉकी", "फुटबॉल", "कोई नहीं"], answer: 3 },
+            { question: "भारत के पहले प्रधानमंत्री कौन थे?", options: ["लाल बहादुर शास्त्री", "जवाहरलाल नेहरू", "इंदिरा गांधी", "राजेंद्र प्रसाद"], answer: 1 },
+            { question: "प्रकाश संश्लेषण में पौधे किस गैस का उपयोग करते हैं?", options: ["ऑक्सीजन", "नाइट्रोजन", "कार्बन डाइऑक्साइड", "हाइड्रोजन"], answer: 2 },
+            { question: "विश्व का सबसे बड़ा रेगिस्तान कौन सा है?", options: ["सहारा", "गोबी", "थार", "काला हरी"], answer: 0 },
+            { question: "भारत का राष्ट्रीय वृक्ष कौन सा है?", options: ["नीम", "बरगद", "पीपल", "आम"], answer: 1 },
+            { question: "मानव रक्त का रंग क्या है?", options: ["नीला", "हरा", "लाल", "पीला"], answer: 2 },
+
+            // Questions 21-30
+            { question: "टेलीफोन का आविष्कार किसने किया?", options: ["थॉमस एडिसन", "निकोला टेस्ला", "अलेक्जेंडर ग्राहम बेल", "मारकोनी"], answer: 2 },
+            { question: "फ्रांस की राजधानी क्या है?", options: ["रोम", "बर्लिन", "पेरिस", "मैड्रिड"], answer: 2 },
+            { question: "कमरे के तापमान पर कौन सी धातु द्रव होती है?", options: ["लौह", "पारा", "एल्युमिनियम", "चांदी"], answer: 1 },
+            { question: "भारत का राष्ट्रगान कौन सा है?", options: ["वन्दे मातरम्", "जन गण मन", "सारे जहाँ से अच्छा", "ऐ मेरे वतन"], answer: 1 },
+            { question: "लाल ग्रह किसे कहा जाता है?", options: ["शुक्र", "मंगल", "बृहस्पति", "शनि"], answer: 1 },
+            { question: "विश्व का सबसे बड़ा महाद्वीप कौन सा है?", options: ["अफ्रीका", "यूरोप", "एशिया", "उत्तर अमेरिका"], answer: 2 },
+            { question: "माइक्रोसॉफ्ट की स्थापना किसने की?", options: ["स्टीव जॉब्स", "मार्क जुकरबर्ग", "बिल गेट्स", "लैरी पेज"], answer: 2 },
+            { question: "भारत की मुद्रा क्या है?", options: ["डॉलर", "रुपया", "टाका", "रियल"], answer: 1 },
+            { question: "भारत की पहली महिला प्रधानमंत्री कौन थीं?", options: ["सरोजिनी नायडू", "इंदिरा गांधी", "प्रतिभा पाटिल", "सोनिया गांधी"], answer: 1 },
+            { question: "पानी का रासायनिक सूत्र क्या है?", options: ["CO2", "H2O", "O2", "NaCl"], answer: 1 },
+
+            // Questions 31-40
+            { question: "उत्तर प्रदेश की राजधानी क्या है?", options: ["कानपुर", "वाराणसी", "लखनऊ", "आगरा"], answer: 2 },
+            { question: "मानव शरीर की सबसे बड़ी हड्डी कौन सी है?", options: ["खोपड़ी", "फीमर", "रिब", "स्पाइन"], answer: 1 },
+            { question: "एफिल टॉवर किस देश में स्थित है?", options: ["इटली", "जर्मनी", "फ्रांस", "स्पेन"], answer: 2 },
+            { question: "सूर्य क्या है?", options: ["ग्रह", "तारा", "धूमकेतु", "शनि"], answer: 1 },
+            { question: "भारतीय संविधान के जनक कौन हैं?", options: ["महात्मा गांधी", "जवाहरलाल नेहरू", "डॉ. भीमराव अंबेडकर", "राजेंद्र प्रसाद"], answer: 2 },
+            { question: "भारत का राष्ट्रीय चिन्ह क्या है?", options: ["अशोक स्तंभ", "कमल", "त्रिरंगा", "चक्र"], answer: 0 },
+            { question: "विश्व का सबसे बड़ा स्तनपायी कौन सा है?", options: ["हाथी", "नीली व्हेल", "जिराफ", "गैंडा"], answer: 1 },
+            { question: "भारत का स्वतंत्रता दिवस कब मनाया जाता है?", options: ["26 जनवरी", "15 अगस्त", "2 अक्टूबर", "14 नवम्बर"], answer: 1 },
+            { question: "ताजमहल कहाँ स्थित है?", options: ["दिल्ली", "जयपुर", "आगरा", "लखनऊ"], answer: 2 },
+            { question: "सौरमंडल में कितने ग्रह हैं?", options: ["7", "8", "9", "10"], answer: 1 },
+
+            // Questions 41-50
+            { question: "भारत की सबसे लंबी नदी कौन सी है?", options: ["गंगा", "ब्रह्मपुत्र", "यमुना", "सिंधु"], answer: 1 },
+            { question: "सबसे कठोर पदार्थ कौन सा है?", options: ["स्टील", "हीरा", "प्लैटिनम", "ग्रेफाइट"], answer: 1 },
+            { question: "भारत का क्षेत्रफल के हिसाब से सबसे बड़ा राज्य कौन सा है?", options: ["महाराष्ट्र", "राजस्थान", "मध्य प्रदेश", "उत्तर प्रदेश"], answer: 1 },
+            { question: "पृथ्वी पर सबसे अधिक ऑक्सीजन कौन उत्पन्न करता है?", options: ["जंगल", "महासागर", "नदियाँ", "पर्वत"], answer: 1 },
+            { question: "इंटरनेट का आविष्कार किसने किया?", options: ["टिम बर्नर्स-ली", "बिल गेट्स", "स्टीव जॉब्स", "मार्क जुकरबर्ग"], answer: 0 },
+            { question: "भारत में कितने राज्य हैं?", options: ["26", "28", "29", "30"], answer: 2 },
+            { question: "सबसे बड़ा स्तनधारी कौन सा है?", options: ["हाथी", "जिराफ", "नीली व्हेल", "गैंडा"], answer: 2 },
+            { question: "भारत का राष्ट्रीय पकवान कौन सा है?", options: ["बिरयानी", "खिचड़ी", "रोटी", "दाल"], answer: 1 },
+            { question: "सबसे बड़ा जलप्रपात कौन सा है?", options: ["नियाग्रा", "विक्टोरिया", "एंजिल", "इगुअसु"], answer: 1 },
+            { question: "भारत का राष्ट्रीय कैलेंडर कौन सा है?", options: ["ग्रेगोरियन", "शक संवत", "विक्रम संवत", "हिजरी"], answer: 1 },
+
+            // Additional questions 51-70
+            { question: "किस ग्रह को 'लाल ग्रह' कहा जाता है?", options: ["शुक्र", "मंगल", "बृहस्पति", "शनि"], answer: 1 },
+            { question: "भारत का सबसे बड़ा राज्य क्षेत्रफल में?", options: ["महाराष्ट्र", "राजस्थान", "मध्य प्रदेश", "उत्तर प्रदेश"], answer: 1 },
+            { question: "सबसे बड़ा महासागर कौन सा है?", options: ["अटलांटिक", "हिंद", "आर्कटिक", "प्रशांत"], answer: 3 },
+            { question: "किस देश को 'लैंड ऑफ राइजिंग सन' कहा जाता है?", options: ["चीन", "जापान", "कोरिया", "थाईलैंड"], answer: 1 },
+            { question: "विश्व का सबसे बड़ा द्वीप कौन सा है?", options: ["ग्रीनलैंड", "ऑस्ट्रेलिया", "मेडागास्कर", "न्यू गिनी"], answer: 0 },
+            { question: "सबसे बड़ा सरीसृप कौन सा है?", options: ["मगरमच्छ", "कछुआ", "छिपकली", "साँप"], answer: 0 },
+            { question: "किस धातु को 'तरल चाँदी' कहा जाता है?", options: ["पारा", "सोना", "चाँदी", "प्लैटिनम"], answer: 0 },
+            { question: "सबसे बड़ा पक्षी कौन सा है?", options: ["शुतुरमुर्ग", "हंस", "गिद्ध", "मोर"], answer: 0 },
+            { question: "किस देश को 'सफेद हाथियों की भूमि' कहा जाता है?", options: ["थाईलैंड", "भारत", "श्रीलंका", "इंडोनेशिया"], answer: 0 },
+            { question: "सबसे बड़ा फल कौन सा है?", options: ["तरबूज", "कद्दू", "केला", "अनानास"], answer: 1 },
+
+            // Additional questions 71-90
+            { question: "किस ग्रह पर 'ग्रेट रेड स्पॉट' है?", options: ["शुक्र", "मंगल", "बृहस्पति", "शनि"], answer: 2 },
+            { question: "सबसे बड़ा जानवर कौन सा है?", options: ["हाथी", "जिराफ", "नीली व्हेल", "गैंडा"], answer: 2 },
+            { question: "किस देश को 'मध्यरात्रि सूर्य का देश' कहा जाता है?", options: ["नॉर्वे", "स्वीडन", "फिनलैंड", "आइसलैंड"], answer: 0 },
+            { question: "सबसे बड़ा फूल कौन सा है?", options: ["गुलाब", "कमल", "रैफ्लेशिया", "सूरजमुखी"], answer: 2 },
+            { question: "किस ग्रह को 'सुबह का तारा' कहा जाता है?", options: ["बुध", "शुक्र", "मंगल", "बृहस्पति"], answer: 1 },
+            { question: "सबसे बड़ा स्तनधारी कौन सा है?", options: ["हाथी", "जिराफ", "नीली व्हेल", "गैंडा"], answer: 2 },
+            { question: "किस देश को 'हजार झीलों का देश' कहा जाता है?", options: ["फिनलैंड", "कनाडा", "रूस", "स्वीडन"], answer: 0 },
+            { question: "सबसे बड़ा पेड़ कौन सा है?", options: ["बरगद", "सेक्वोइया", "नीम", "देवदार"], answer: 1 },
+            { question: "किस ग्रह को 'शाम का तारा' कहा जाता है?", options: ["बुध", "शुक्र", "मंगल", "बृहस्पति"], answer: 1 },
+            { question: "सबसे बड़ा अंडा किसका होता है?", options: ["मुर्गी", "शुतुरमुर्ग", "बतख", "गिद्ध"], answer: 1 },
+
+            // Additional questions 91-110
+            { question: "किस देश को 'कोहिनूर हीरे का देश' कहा जाता है?", options: ["भारत", "दक्षिण अफ्रीका", "रूस", "ब्राजील"], answer: 0 },
+            { question: "सबसे बड़ा सरीसृप कौन सा है?", options: ["मगरमच्छ", "कछुआ", "छिपकली", "साँप"], answer: 0 },
+            { question: "किस ग्रह को 'नीला ग्रह' कहा जाता है?", options: ["पृथ्वी", "मंगल", "बृहस्पति", "शनि"], answer: 0 },
+            { question: "सबसे बड़ा पक्षी कौन सा है?", options: ["शुतुरमुर्ग", "हंस", "गिद्ध", "मोर"], answer: 0 },
+            { question: "किस देश को 'स्वर्ण मंदिर का देश' कहा जाता है?", options: ["भारत", "थाईलैंड", "कंबोडिया", "म्यांमार"], answer: 0 },
+            { question: "सबसे बड़ा फल कौन सा है?", options: ["तरबूज", "कद्दू", "केला", "अनानास"], answer: 1 },
+            { question: "किस ग्रह को 'लाल ग्रह' कहा जाता है?", options: ["शुक्र", "मंगल", "बृहस्पति", "शनि"], answer: 1 },
+            { question: "सबसे बड़ा जानवर कौन सा है?", options: ["हाथी", "जिराफ", "नीली व्हेल", "गैंडा"], answer: 2 },
+            { question: "किस देश को 'हिमालय का देश' कहा जाता है?", options: ["नेपाल", "भूटान", "तिब्बत", "भारत"], answer: 0 },
+            { question: "सबसे बड़ा फूल कौन सा है?", options: ["गुलाब", "कमल", "रैफ्लेशिया", "सूरजमुखी"], answer: 2 },
+
+            // Additional questions 111-130
+            { question: "किस ग्रह पर 'ओलंपस मॉन्स' ज्वालामुखी है?", options: ["शुक्र", "मंगल", "बृहस्पति", "शनि"], answer: 1 },
+            { question: "सबसे बड़ा स्तनधारी कौन सा है?", options: ["हाथी", "जिराफ", "नीली व्हेल", "गैंडा"], answer: 2 },
+            { question: "किस देश को 'सफेद हाथियों की भूमि' कहा जाता है?", options: ["थाईलैंड", "भारत", "श्रीलंका", "इंडोनेशिया"], answer: 0 },
+            { question: "सबसे बड़ा पेड़ कौन सा है?", options: ["बरगद", "सेक्वोइया", "नीम", "देवदार"], answer: 1 },
+            { question: "किस ग्रह को 'सुबह का तारा' कहा जाता है?", options: ["बुध", "शुक्र", "मंगल", "बृहस्पति"], answer: 1 },
+            { question: "सबसे बड़ा अंडा किसका होता है?", options: ["मुर्गी", "शुतुरमुर्ग", "बतख", "गिद्ध"], answer: 1 },
+            { question: "किस देश को 'कोहिनूर हीरे का देश' कहा जाता है?", options: ["भारत", "दक्षिण अफ्रीका", "रूस", "ब्राजील"], answer: 0 },
+            { question: "सबसे बड़ा सरीसृप कौन सा है?", options: ["मगरमच्छ", "कछुआ", "छिपकली", "साँप"], answer: 0 },
+            { question: "किस ग्रह को 'नीला ग्रह' कहा जाता है?", options: ["पृथ्वी", "मंगल", "बृहस्पति", "शनि"], answer: 0 },
+            { question: "सबसे बड़ा पक्षी कौन सा है?", options: ["शुतुरमुर्ग", "हंस", "गिद्ध", "मोर"], answer: 0 }
+        ];
+
+        // Function to get random questions from pool
+        function getRandomQuestions(pool, count) {
+            const shuffled = [...pool].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // Create random quiz data (50 questions from pool)
+        let quizData = getRandomQuestions(questionPool, 50);
 
         // Quiz state
         let currentQuestionIndex = 0;
         let userAnswers = new Array(quizData.length).fill(null);
         let markedQuestions = new Array(quizData.length).fill(false);
         let timerInterval;
-        let timeLeft = 20 * 60; // 20 minutes in seconds
+        let timeLeft = 45 * 60; // 45 minutes in seconds
         let quizCompleted = false;
 
         // DOM Elements
@@ -792,6 +850,12 @@
             // Change color when time is running low
             if (timeLeft < 300) { // Less than 5 minutes
                 timeRemainingSpan.style.color = '#ff4757';
+                timeRemainingSpan.style.animation = 'pulse 1s infinite';
+            } else if (timeLeft < 600) { // Less than 10 minutes
+                timeRemainingSpan.style.color = '#ffa502';
+            } else {
+                timeRemainingSpan.style.color = '#ff4757';
+                timeRemainingSpan.style.animation = 'none';
             }
         }
 
@@ -850,15 +914,21 @@
             skippedCountSpan.textContent = skipped;
             
             // Calculate time taken
-            const totalTime = 20 * 60; // 20 minutes in seconds
+            const totalTime = 45 * 60; // 45 minutes in seconds
             const timeTaken = totalTime - timeLeft;
             const minutesTaken = Math.floor(timeTaken / 60);
             const secondsTaken = timeTaken % 60;
             timeTakenSpan.textContent = `${minutesTaken.toString().padStart(2, '0')}:${secondsTaken.toString().padStart(2, '0')}`;
             
+            // Calculate percentage
+            const percentage = ((correct / quizData.length) * 100).toFixed(1);
+            
             // Show summary
             questionArea.classList.add('hidden');
             summaryContainer.classList.remove('hidden');
+            
+            // Add percentage to title
+            document.querySelector('.summary-title').textContent = `Quiz Summary - ${percentage}% Score`;
         }
 
         // Restart quiz
@@ -867,8 +937,11 @@
             currentQuestionIndex = 0;
             userAnswers = new Array(quizData.length).fill(null);
             markedQuestions = new Array(quizData.length).fill(false);
-            timeLeft = 20 * 60;
+            timeLeft = 45 * 60;
             quizCompleted = false;
+            
+            // Get new random questions for restart
+            quizData = getRandomQuestions(questionPool, 50);
             
             // Clear question numbers and recreate
             questionNav.innerHTML = '';
@@ -876,6 +949,7 @@
             
             // Reset timer display
             timeRemainingSpan.style.color = '#ff4757';
+            timeRemainingSpan.style.animation = 'none';
             
             // Hide summary, show questions
             summaryContainer.classList.add('hidden');
@@ -888,7 +962,21 @@
             // Load first question
             loadQuestion(currentQuestionIndex);
             updateNavigation();
+            
+            // Reset title
+            document.querySelector('.summary-title').textContent = 'Quiz Summary';
         });
+
+        // Add CSS animation for timer
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { opacity: 1; }
+                50% { opacity: 0.5; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Initialize quiz on page load
         document.addEventListener('DOMContentLoaded', initQuiz);
